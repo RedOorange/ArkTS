@@ -17,34 +17,42 @@ struct Home{
         color: '#6C6666',
       })
 
-      //-------需要一个边框现来区分顶部与内容部
-
       Column(){//内容区域
         Row(){
           Row(){
-            Button('刷词条', { type: ButtonType.Capsule, stateEffect: true })//两个按钮之间需要保持距离
-              .backgroundColor('#FFFFFF').width('60%').height('5%').fontColor('#000000').align(Alignment.Center)
-          }.width('50%').backgroundColor('red')
+            Butn({ButnCol:'#FFFFFF'})
+          }.width('50%')
           Row(){
-            Button('抽词条', { type: ButtonType.Capsule, stateEffect: true })
-              .backgroundColor('#FFFFFF').width('60%').height('5%').fontColor('#000000').align()
+            Butn({ButnCol:'#FFFFFF'})
           }.width('50%')
         }.margin({top:'2%'}).width('100%')
 
         Row(){//--------抽奖机逻辑
 
         }
-      }.backgroundColor('#EFC8E0').width('100%').height('70%')
+      }.backgroundColor('#AFADAD').width('100%').height('80%')
 
 
       Row(){
         Text("首页")
-          .layoutWeight(1).backgroundColor('#B3B5C0')
+          .layoutWeight(1).fontSize(23)
         Text("主页")
-          .layoutWeight(1)
+          .layoutWeight(1).fontSize(23)
         Text("个人")
-          .layoutWeight(1)
-      }.backgroundColor('#777EA9').width('100%').height('20%')
+          .layoutWeight(1).fontSize(23)
+      }.width('100%').height('10%')
     }.height('100%')
+  }
+}
+
+@Component
+struct Butn{//按钮组件,使用prop进行单项数据绑定,便于每个组件成为不一样的自己,有共同的地方,又有可以改变为单独的地方
+  @Prop ButnCol:string
+  build(){
+    Button('刷词条', { type: ButtonType.Capsule, stateEffect: true })//----------子组件的居中我并没有找到方法,虽然不用了,但是我需要学会
+      .backgroundColor(this.ButnCol).width('80%').height('4%').fontColor('#000000').margin({left:'10%'})//两个按钮的横向布局我直接使用了margin使其根据父组件的位置进行调整
+      .onClick(() =>{
+        this.ButnCol = '#D0CACA'//-------这种方法属于双向数据绑定,一个动,全部动,所以我希望每个数据都是独立的,但是结构又是共同的
+      })
   }
 }
