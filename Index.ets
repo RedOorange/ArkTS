@@ -21,11 +21,15 @@ struct Home{
 
       Column(){//内容区域
         Row(){
-          Button('刷词条', { type: ButtonType.Capsule, stateEffect: true })//两个按钮之间需要保持距离
-            .backgroundColor('#FFFFFF').width('40%').height('5%').fontColor('#000000')
-          Button('抽词条', { type: ButtonType.Capsule, stateEffect: true })
-            .backgroundColor('#FFFFFF').width('40%').height('5%').fontColor('#000000')
-        }//--------需要距离顶部栏一定距离
+          Row(){
+            Button('刷词条', { type: ButtonType.Capsule, stateEffect: true })//两个按钮之间需要保持距离
+              .backgroundColor('#FFFFFF').width('60%').height('5%').fontColor('#000000').align(Alignment.Center)
+          }.width('50%').backgroundColor('red')
+          Row(){
+            Button('抽词条', { type: ButtonType.Capsule, stateEffect: true })
+              .backgroundColor('#FFFFFF').width('60%').height('5%').fontColor('#000000').align()
+          }.width('50%')
+        }.margin({top:'2%'}).width('100%')
 
         Row(){//--------抽奖机逻辑
 
